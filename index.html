@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surprise for My Teddy 🧸</title>
     
-    <!-- Google Fonts updated with New Rocker -->
+    <!-- Google Fonts updated with Dancing Script -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=New+Rocker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=New+Rocker&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -87,14 +87,23 @@
 
         .romantic-text {
             color: #7b1fa2;
-            font-size: 1.4rem;
+            font-size: 1.9rem; /* Increased font size */
             margin-bottom: 35px;
-            font-weight: 500;
-            line-height: 1.5;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+            font-weight: 700; /* Made it bold */
+            line-height: 1.6; /* Better line height */
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4);
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+            /* Romantic Dancing Script font */
+            font-family: 'Dancing Script', cursive;
+            letter-spacing: 0.5px; /* Slight letter spacing for elegance */
+            animation: textGlow 3s infinite alternate; /* Added subtle animation */
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 2px 4px rgba(255, 255, 255, 0.4); }
+            100% { text-shadow: 0 2px 8px rgba(255, 255, 255, 0.6), 0 0 12px rgba(255, 192, 203, 0.4); }
         }
 
         #surpriseBtn {
@@ -313,7 +322,8 @@
             }
             
             .romantic-text {
-                font-size: 1.2rem;
+                font-size: 1.5rem; /* Adjusted for mobile */
+                margin-bottom: 30px;
             }
             
             #surpriseBtn {
@@ -337,9 +347,8 @@
     <!-- Start Screen -->
     <div id="startScreen">
         <div class="heart">❤️</div>
-        <p class="romantic-text">
-        
-        </p>
+        <!-- Changed text to English with romantic font -->
+        <p class="romantic-text">A little surprise, a lot of love… waiting for you</p>
         
         <button id="surpriseBtn">
             <div class="btn-content">
@@ -525,10 +534,10 @@
         preloadGif.src = gifUrl;
         
         preloadGif.onload = function() {
-            console.log("GIF প্রিলোড সম্পন্ন!");
+            console.log("GIF preloaded successfully!");
         };
         preloadGif.onerror = function() {
-            console.error("GIF লোড করতে সমস্যা!");
+            console.error("GIF loading error!");
         };
 
         // Surprise button click
@@ -608,11 +617,11 @@
 
         // GIF load confirmation
         fullscreenGif.onload = function() {
-            console.log("GIF সফলভাবে লোড হয়েছে!");
+            console.log("GIF loaded successfully!");
         };
         fullscreenGif.onerror = function() {
-            console.error("GIF লোড ব্যর্থ!");
-            alert("GIF লোড করতে সমস্যা! ইন্টারনেট চেক করুন।");
+            console.error("GIF failed to load!");
+            alert("Unable to load GIF! Please check your internet connection.");
             startScreen.style.display = 'block';
             gifScreen.style.display = 'none';
             // Reset body background
