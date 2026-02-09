@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for My Teddy 🧸</title>
+    
+    <!-- Google Fonts updated with New Rocker -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=New+Rocker&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fad0c4 50%, #a18cd1 100%);
+            background-size: 400% 400%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            transition: background 0.8s ease;
+            animation: romanticGradient 15s ease infinite;
+        }
+
+        @keyframes romanticGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        #startScreen {
+            text-align: center;
+            z-index: 10;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            border-radius: 35px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.4),
+                0 0 30px rgba(255, 192, 203, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 90%;
+            width: 650px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #startScreen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b8b, #ff8e53, #ff6b8b);
+            border-radius: 35px 35px 0 0;
+        }
+
+        .heart {
+            color: #ff4081;
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            animation: heartbeat 1.4s infinite, floatHeart 4s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(255, 64, 129, 0.4));
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            30% { transform: scale(1.15); }
+            60% { transform: scale(0.95); }
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-12px) rotate(8deg); }
+            66% { transform: translateY(8px) rotate(-8deg); }
+        }
+
+        .romantic-text {
+            color: #7b1fa2;
+            font-size: 1.4rem;
+            margin-bottom: 35px;
+            font-weight: 500;
+            line-height: 1.5;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #surpriseBtn {
+            background: linear-gradient(135deg, #ff6b8b, #ff8e53, #ff6b8b);
+            background-size: 200% 200%;
+            color: white;
+            border: none;
+            padding: 22px 55px;
+            font-size: 1.9rem;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 
+                0 12px 30px rgba(255, 107, 139, 0.5),
+                inset 0 -4px 10px rgba(0, 0, 0, 0.15),
+                inset 0 4px 10px rgba(255, 255, 255, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: bold;
+            letter-spacing: 1.2px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: buttonGlow 3s infinite alternate;
+            
+            /* Button font */
+            font-family: 'Delius Swash Caps', cursive, sans-serif;
+        }
+
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 12px 30px rgba(255, 107, 139, 0.5); }
+            100% { box-shadow: 0 12px 40px rgba(255, 107, 139, 0.8), 0 0 20px rgba(255, 64, 129, 0.6); }
+        }
+
+        #surpriseBtn:hover {
+            transform: translateY(-8px) scale(1.05);
+            background-size: 150% 150%;
+            background-position: right center;
+            letter-spacing: 1.5px;
+            box-shadow: 
+                0 20px 45px rgba(255, 107, 139, 0.7),
+                inset 0 -4px 10px rgba(0, 0, 0, 0.15),
+                inset 0 4px 10px rgba(255, 255, 255, 0.4),
+                0 0 25px rgba(255, 64, 129, 0.7);
+        }
+
+        #surpriseBtn:active {
+            transform: translateY(-2px) scale(1.02);
+            transition: transform 0.1s ease;
+        }
+
+        #surpriseBtn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+            z-index: -1;
+        }
+
+        #surpriseBtn:hover::before {
+            left: 100%;
+        }
+
+        .btn-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .teddy-emoji {
+            font-size: 1.8rem;
+            animation: teddyDance 2s infinite;
+        }
+
+        @keyframes teddyDance {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-15deg) scale(1.1); }
+            75% { transform: rotate(15deg) scale(1.1); }
+        }
+
+        /* Floating romantic elements */
+        .romantic-elements {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .romantic-element {
+            position: absolute;
+            font-size: 28px;
+            opacity: 0;
+            animation: floatRomantic 20s linear infinite;
+        }
+
+        @keyframes floatRomantic {
+            0% { 
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Confetti container */
+        #confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 25;
+            display: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #ff4081;
+            top: -10px;
+            opacity: 0;
+            border-radius: 50%;
+        }
+
+        .confetti-heart {
+            position: absolute;
+            font-size: 20px;
+            top: -20px;
+            opacity: 0;
+        }
+
+        /* Fullscreen GIF */
+        #gifScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            display: none;
+            z-index: 20;
+        }
+
+        #fullscreenGif {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Close button */
+        #closeBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            z-index: 30;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        #closeBtn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        /* Copyright Footer Styling */
+        #copyrightFooter {
+            position: fixed;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: 'New Rocker', cursive;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+            z-index: 5;
+            padding: 10px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        #copyrightFooter:hover {
+            opacity: 1;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #startScreen {
+                padding: 40px 25px;
+                margin: 20px;
+            }
+            
+            .heart {
+                font-size: 3.8rem;
+            }
+            
+            .romantic-text {
+                font-size: 1.2rem;
+            }
+            
+            #surpriseBtn {
+                padding: 20px 40px;
+                font-size: 1.7rem;
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            #copyrightFooter {
+                font-size: 0.7rem;
+                bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating romantic elements -->
+    <div class="romantic-elements" id="romanticElements"></div>
+
+    <!-- Start Screen -->
+    <div id="startScreen">
+        <div class="heart">❤️</div>
+        <p class="romantic-text">একটি বিশেষ উপহার তোমার জন্য অপেক্ষা করছে। প্রস্তুত হও এই রোমান্টিক মুহূর্তের জন্য...</p>
+        
+        <button id="surpriseBtn">
+            <div class="btn-content">
+                <span class="teddy-emoji">🧸</span>
+                <span>Surprise for My Teddy</span>
+                <span class="teddy-emoji">💝</span>
+            </div>
+        </button>
+    </div>
+
+    <!-- Confetti Container -->
+    <div id="confetti-container"></div>
+
+    <!-- Fullscreen GIF -->
+    <div id="gifScreen">
+        <img id="fullscreenGif" src="" alt="Special Surprise">
+    </div>
+
+    <!-- Copyright Footer -->
+    <div id="copyrightFooter">
+        Only for his madam — From SAMit
+    </div>
+
+    <button id="closeBtn" title="Close">✕</button>
+
+    <script>
+        // DOM Elements
+        const startScreen = document.getElementById('startScreen');
+        const gifScreen = document.getElementById('gifScreen');
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const fullscreenGif = document.getElementById('fullscreenGif');
+        const closeBtn = document.getElementById('closeBtn');
+        const confettiContainer = document.getElementById('confetti-container');
+        const romanticElements = document.getElementById('romanticElements');
+        const copyrightFooter = document.getElementById('copyrightFooter');
+
+        // GIF URL
+        const gifUrl = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3V1bHlmMHFsN3YwZnRpbzFnbnd4YnhtdjFzYXBqNjhodGJ5Z2ZrayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WC6Yp4WIDbYsmn5RI6/giphy.gif";
+
+        // Create floating romantic elements
+        function createRomanticElements() {
+            const elements = ['❤️', '💖', '💝', '💕', '💗', '💓', '💞', '🌸', '🌹', '🌷', '💐'];
+            
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const element = document.createElement('div');
+                    element.className = 'romantic-element';
+                    element.textContent = elements[Math.floor(Math.random() * elements.length)];
+                    element.style.left = Math.random() * 100 + 'vw';
+                    element.style.fontSize = (Math.random() * 25 + 20) + 'px';
+                    element.style.opacity = Math.random() * 0.6 + 0.4;
+                    element.style.animationDuration = (Math.random() * 15 + 15) + 's';
+                    element.style.animationDelay = Math.random() * 10 + 's';
+                    element.style.color = getRandomRomanticColor();
+                    
+                    romanticElements.appendChild(element);
+                    
+                    // Remove element after animation
+                    setTimeout(() => {
+                        if (element.parentNode) {
+                            element.remove();
+                        }
+                    }, 30000);
+                }, i * 500);
+            }
+            
+            // Keep creating elements
+            setInterval(() => {
+                if (romanticElements.children.length < 25) {
+                    createRomanticElements();
+                }
+            }, 8000);
+        }
+
+        // Get random romantic color
+        function getRandomRomanticColor() {
+            const colors = [
+                '#ff4081', '#ff6b8b', '#ff8e53', '#ff4081',
+                '#e91e63', '#f48fb1', '#f06292', '#ec407a'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        // Create confetti pieces
+        function createConfettiPieces(count) {
+            const colors = [
+                '#ff4081', '#ff6b8b', '#ff8e53', '#e91e63',
+                '#f48fb1', '#ec407a', '#f06292', '#ad1457'
+            ];
+            
+            const heartEmojis = ['❤️', '💖', '💝', '💕', '💗', '💓', '💞'];
+            
+            // Show container
+            confettiContainer.style.display = 'block';
+            
+            // Create confetti particles
+            for (let i = 0; i < count; i++) {
+                setTimeout(() => {
+                    // Randomly decide if it's a heart emoji or colored dot
+                    const isHeart = Math.random() > 0.5;
+                    
+                    if (isHeart) {
+                        // Create heart confetti
+                        const heart = document.createElement('div');
+                        heart.className = 'confetti-heart';
+                        heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                        heart.style.left = Math.random() * 100 + 'vw';
+                        heart.style.fontSize = (Math.random() * 25 + 20) + 'px';
+                        heart.style.opacity = Math.random() * 0.8 + 0.2;
+                        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                        
+                        confettiContainer.appendChild(heart);
+                        
+                        // Animate heart
+                        const heartAnimation = heart.animate([
+                            {
+                                transform: 'translateY(0) rotate(0deg) scale(1)',
+                                opacity: 1
+                            },
+                            {
+                                transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg) scale(0.5)`,
+                                opacity: 0
+                            }
+                        ], {
+                            duration: Math.random() * 3000 + 2000,
+                            easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                        });
+                        
+                        // Remove after animation
+                        heartAnimation.onfinish = () => {
+                            heart.remove();
+                        };
+                    } else {
+                        // Create colored dot confetti
+                        const confetti = document.createElement('div');
+                        confetti.className = 'confetti';
+                        
+                        const size = Math.random() * 15 + 8;
+                        const color = colors[Math.floor(Math.random() * colors.length)];
+                        
+                        confetti.style.width = size + 'px';
+                        confetti.style.height = size + 'px';
+                        confetti.style.background = color;
+                        confetti.style.left = Math.random() * 100 + 'vw';
+                        confetti.style.opacity = Math.random() * 0.8 + 0.2;
+                        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '4px';
+                        
+                        confettiContainer.appendChild(confetti);
+                        
+                        // Animate confetti
+                        const animation = confetti.animate([
+                            {
+                                transform: 'translateY(0) rotate(0deg)',
+                                opacity: 1
+                            },
+                            {
+                                transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 720}deg)`,
+                                opacity: 0
+                            }
+                        ], {
+                            duration: Math.random() * 3000 + 2000,
+                            easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                        });
+                        
+                        // Remove after animation
+                        animation.onfinish = () => {
+                            confetti.remove();
+                        };
+                    }
+                }, i * 30); // Stagger the creation
+            }
+            
+            // Hide container after 4 seconds
+            setTimeout(() => {
+                confettiContainer.style.display = 'none';
+                // Clear remaining confetti
+                confettiContainer.innerHTML = '';
+            }, 4000);
+        }
+
+        // Preload GIF
+        const preloadGif = new Image();
+        preloadGif.src = gifUrl;
+        
+        preloadGif.onload = function() {
+            console.log("GIF প্রিলোড সম্পন্ন!");
+        };
+        preloadGif.onerror = function() {
+            console.error("GIF লোড করতে সমস্যা!");
+        };
+
+        // Surprise button click
+        surpriseBtn.addEventListener('click', function() {
+            // Disable button during animation
+            surpriseBtn.disabled = true;
+            surpriseBtn.style.opacity = '0.7';
+            surpriseBtn.style.cursor = 'not-allowed';
+            
+            // Create confetti explosion
+            createConfettiPieces(150);
+            
+            // Button click animation
+            surpriseBtn.animate([
+                { transform: 'scale(1)', boxShadow: '0 12px 30px rgba(255, 107, 139, 0.5)' },
+                { transform: 'scale(1.15)', boxShadow: '0 0 40px rgba(255, 107, 139, 0.8)' },
+                { transform: 'scale(0.9)', boxShadow: '0 0 60px rgba(255, 107, 139, 0.9)' }
+            ], {
+                duration: 600,
+                easing: 'ease-in-out'
+            });
+            
+            // Start screen fade out animation
+            startScreen.animate([
+                { opacity: 1, transform: 'scale(1)' },
+                { opacity: 0, transform: 'scale(0.9)' }
+            ], {
+                duration: 800,
+                easing: 'ease-in-out'
+            });
+            
+            // Hide copyright footer during GIF display
+            copyrightFooter.style.opacity = '0';
+            
+            // After confetti animation, show GIF
+            setTimeout(() => {
+                // Set GIF source
+                fullscreenGif.src = gifUrl;
+                
+                // Hide start screen
+                startScreen.style.display = 'none';
+                
+                // Show GIF screen with animation
+                gifScreen.style.display = 'block';
+                gifScreen.animate([
+                    { opacity: 0 },
+                    { opacity: 1 }
+                ], {
+                    duration: 600,
+                    easing: 'ease-in'
+                });
+                
+                // Change background to black
+                document.body.style.background = "#000";
+                document.body.style.animation = 'none';
+                
+                // Show close button after 3 seconds
+                setTimeout(() => {
+                    closeBtn.style.display = 'flex';
+                    closeBtn.animate([
+                        { opacity: 0, transform: 'scale(0.5)' },
+                        { opacity: 1, transform: 'scale(1)' }
+                    ], {
+                        duration: 400,
+                        easing: 'ease-out'
+                    });
+                }, 3000);
+                
+                // Reset button for future use
+                setTimeout(() => {
+                    surpriseBtn.disabled = false;
+                    surpriseBtn.style.opacity = '1';
+                    surpriseBtn.style.cursor = 'pointer';
+                }, 4000);
+            }, 1200);
+        });
+
+        // GIF load confirmation
+        fullscreenGif.onload = function() {
+            console.log("GIF সফলভাবে লোড হয়েছে!");
+        };
+        fullscreenGif.onerror = function() {
+            console.error("GIF লোড ব্যর্থ!");
+            alert("GIF লোড করতে সমস্যা! ইন্টারনেট চেক করুন।");
+            startScreen.style.display = 'block';
+            gifScreen.style.display = 'none';
+            // Reset body background
+            document.body.style.background = "";
+            document.body.style.animation = 'romanticGradient 15s ease infinite';
+            // Show copyright footer again
+            copyrightFooter.style.opacity = '1';
+        };
+
+        // Close button click
+        closeBtn.addEventListener('click', function() {
+            // Hide GIF screen with animation
+            gifScreen.animate([
+                { opacity: 1 },
+                { opacity: 0 }
+            ], {
+                duration: 600,
+                easing: 'ease-in'
+            }).onfinish = () => {
+                gifScreen.style.display = 'none';
+                
+                // Show start screen with animation
+                startScreen.style.display = 'block';
+                startScreen.animate([
+                    { opacity: 0, transform: 'scale(0.9)' },
+                    { opacity: 1, transform: 'scale(1)' }
+                ], {
+                    duration: 600,
+                    easing: 'ease-out'
+                });
+                
+                // Reset button animation
+                surpriseBtn.animate([
+                    { opacity: 0, transform: 'scale(0)' },
+                    { opacity: 1, transform: 'scale(1)' }
+                ], {
+                    duration: 500,
+                    easing: 'ease-out'
+                });
+                
+                // Show copyright footer again
+                copyrightFooter.style.opacity = '1';
+            };
+            
+            // Hide close button
+            closeBtn.style.display = 'none';
+            
+            // Reset background
+            document.body.style.background = "";
+            document.body.style.animation = 'romanticGradient 15s ease infinite';
+        });
+
+        // ESC key to close
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && gifScreen.style.display === 'block') {
+                closeBtn.click();
+            }
+        });
+
+        // Initialize floating romantic elements
+        window.onload = function() {
+            createRomanticElements();
+        };
+    </script>
+</body>
+</html>
